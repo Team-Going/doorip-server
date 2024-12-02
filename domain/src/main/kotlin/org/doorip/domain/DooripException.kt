@@ -44,4 +44,4 @@ sealed class CriticalException(
 
 class UnknownException(
     cause: Throwable? = null,
-) : CriticalException("e6000", "정의되지 않은 예외입니다. (로그 확인이 필요합니다.)")
+) : CriticalException("e6000", "정의되지 않은 예외입니다. (로그 확인이 필요합니다.)", cause)
