@@ -1,5 +1,5 @@
 language: "ko-KR"
-tone_instructions: "please talk softly"
+tone_instructions: "친근하고 부드러운 톤으로 대화하되, 전문성 있는 조언을 제공해주세요"
 early_access: false
 enable_free_tier: true
 reviews:
