@@ -1,13 +1,19 @@
 package org.doorip.core.auth
 
 import org.doorip.domain.UserId
-import org.springframework.stereotype.Component
+import org.doorip.support.jwt.JwtProvider
+import org.doorip.support.jwt.JwtSecretKey
+import org.springframework.stereotype.Service
 
-@Component
-internal class JwtService : AccessTokenUseCase {
+@Service
+internal class JwtService(
+    private val jwtProvider: JwtProvider,
+    private val jwtSecretKey: JwtSecretKey,
+) : AccessTokenUseCase {
 
     override fun getUserId(token: String): UserId? {
-        // TODO
-        return null
+        val subject = jwtProvider.validateAndGetSubject(token, jwtSecretKey) ?: return null
+
+        return UserId(subject.toLong())
     }
 }

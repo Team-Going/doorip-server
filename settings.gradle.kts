@@ -5,4 +5,5 @@ include(
     "domain",
     "gateway:rdb",
     "support:yaml",
+    "support:jwt",
 )
