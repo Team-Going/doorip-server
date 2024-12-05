@@ -5,6 +5,6 @@ object Versions {
     const val SPRING_BOOT = "3.2.5"
     const val SPRING_DEPENDENCY_MANAGEMENT = "1.1.5"
     const val MYSQL = "8.0.33"
-    const val JJWT = "0.12.5"
+    const val JJWT = "0.12.6"
     const val JDK = 17
 }

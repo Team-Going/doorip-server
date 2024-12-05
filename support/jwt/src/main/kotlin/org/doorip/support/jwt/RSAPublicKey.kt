@@ -11,19 +11,24 @@ class RSAPublicKey(
     private val e: String,
     private val type: String,
 ) : SignatureKey {
-    override val key: Key by lazy {
-        val decoder = Base64.getUrlDecoder()
 
-        val nBytes = decoder.decode(n)
-        val eBytes = decoder.decode(e)
+    override val key: Key? by lazy {
+        try {
+            val decoder = Base64.getUrlDecoder()
 
-        val n = BigInteger(1, nBytes)
-        val e = BigInteger(1, eBytes)
+            val nBytes = decoder.decode(n)
+            val eBytes = decoder.decode(e)
 
-        val rsaPublicKeySpec = RSAPublicKeySpec(n, e)
+            val n = BigInteger(1, nBytes)
+            val e = BigInteger(1, eBytes)
 
-        val keyFactory = KeyFactory.getInstance(type)
+            val rsaPublicKeySpec = RSAPublicKeySpec(n, e)
 
-        keyFactory.generatePublic(rsaPublicKeySpec)
+            val keyFactory = KeyFactory.getInstance(type)
+
+            keyFactory.generatePublic(rsaPublicKeySpec)
+        } catch (e: Exception) {
+            null
+        }
     }
 }
