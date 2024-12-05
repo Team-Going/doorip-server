@@ -12,15 +12,8 @@ sealed class ClientException(
     message: String,
 ) : DooripException(code, message)
 
-class UnauthorizedException(
-    code: String,
-    message: String,
-) : ClientException(code, message)
-
-class UnauthenticatedException(
-    code: String,
-    message: String,
-) : ClientException(code, message)
+data object UnauthorizedException : ClientException("e4030", "인가 과정에서 예외가 발생했습니다.") { private fun readResolve(): Any = UnauthorizedException }
+data object UnauthenticatedException : ClientException("e4010", "인증 과정에서 예외가 발생했습니다. (ex. AT 만료 or RT 만료)") { private fun readResolve(): Any = UnauthenticatedException }
 
 data object InvalidRequestValueException : ClientException("e4000", "잘못된 요청입니다.") { private fun readResolve(): Any = InvalidRequestValueException }
 data object MethodNotAllowedException : ClientException("e4050", "잘못된 HTTP method 요청입니다.") { private fun readResolve(): Any = MethodNotAllowedException }

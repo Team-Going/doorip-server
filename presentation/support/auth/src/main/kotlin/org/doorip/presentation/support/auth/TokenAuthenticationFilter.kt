@@ -49,7 +49,6 @@ internal class TokenAuthenticationFilter(
         val authentication = TokenAuthentication(token, userId, details)
 
         val securityContext = SecurityContextHolder.getContext()
-
         securityContext.authentication = authentication
     }
 
