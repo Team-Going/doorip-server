@@ -1,6 +1,6 @@
 package org.doorip.presentation.support.auth
 
-import org.doorip.domain.UserId
+import org.doorip.domain.entity.UserId
 import org.springframework.core.MethodParameter
 import org.springframework.lang.Nullable
 import org.springframework.security.core.context.SecurityContextHolder

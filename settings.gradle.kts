@@ -4,6 +4,7 @@ include(
     "core",
     "domain",
     "gateway:rdb",
+    "gateway:oauth",
     "support:yaml",
     "support:jwt",
 )
