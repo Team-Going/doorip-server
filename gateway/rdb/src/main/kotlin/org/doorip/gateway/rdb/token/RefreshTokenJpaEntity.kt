@@ -13,12 +13,15 @@ internal class RefreshTokenJpaEntity {
     @Id
     @Column(name = "refresh_token", columnDefinition = "binary(45)", nullable = false)
     lateinit var refreshToken: ByteArray
+        protected set
 
     @Column(name = "user_id", columnDefinition = "bigint", nullable = false)
     var userId: Long = 0
+        protected set
 
     @Column(name = "expired_at", columnDefinition = "datetime", nullable = false)
     lateinit var expiredAt: LocalDateTime
+        protected set
 
     companion object {
         fun of(

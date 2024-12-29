@@ -19,12 +19,15 @@ internal class UserJpaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     var id: Long = 0
+        protected set
 
     @Column(name = "name", columnDefinition = "varchar(255)", nullable = false)
     lateinit var name: String
+        protected set
 
     @Column(name = "intro", columnDefinition = "varchar(255)", nullable = false)
     lateinit var intro: String
+        protected set
 
     @Column(name = "result", columnDefinition = "integer")
     var result: Int? = null
@@ -32,9 +35,11 @@ internal class UserJpaEntity {
     @Enumerated(EnumType.STRING)
     @Column(name = "platform", columnDefinition = "varchar(10)", nullable = false)
     lateinit var platform: AuthPlatform
+        protected set
 
     @Column(name = "platform_id", columnDefinition = "varchar(255)", nullable = false)
     lateinit var platformId: String
+        protected set
 
     companion object {
         fun of(
