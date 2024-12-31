@@ -6,6 +6,9 @@ plugins {
 
 dependencies {
     implementation(project(":domain"))
+    implementation(project(":support:jwt"))
+
+    implementation("org.springframework.cloud:spring-cloud-starter-openfeign:${Versions.OPEN_FEIGN}")
 }
 
 tasks {

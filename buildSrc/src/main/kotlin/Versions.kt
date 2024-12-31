@@ -7,4 +7,5 @@ object Versions {
     const val MYSQL = "8.0.33"
     const val JJWT = "0.12.6"
     const val JDK = 17
+    const val OPEN_FEIGN = "4.1.0"
 }
