@@ -7,4 +7,5 @@ include(
     "gateway:oauth",
     "support:yaml",
     "support:jwt",
+    "support:logging",
 )
