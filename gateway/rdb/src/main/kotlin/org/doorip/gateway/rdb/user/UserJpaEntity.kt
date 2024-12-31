@@ -11,10 +11,12 @@ import jakarta.persistence.Table
 import org.doorip.domain.entity.AuthPlatform
 import org.doorip.domain.entity.User
 import org.doorip.domain.entity.UserId
+import org.doorip.gateway.rdb.BaseJpaEntity
 
 @Table(name = "users")
 @Entity
-internal class UserJpaEntity {
+internal class UserJpaEntity : BaseJpaEntity() {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
