@@ -1,6 +1,7 @@
 package org.doorip.api.exception
 
 import org.doorip.api.dto.ExceptionResponse
+import org.doorip.domain.AlreadyExistingUserException
 import org.doorip.domain.ClientException
 import org.doorip.domain.ConflictException
 import org.doorip.domain.CriticalException
@@ -40,6 +41,7 @@ internal fun DooripException.getHttpStatus(): HttpStatus =
         ConflictException -> HttpStatus.CONFLICT
 
         NotFoundException -> HttpStatus.NOT_FOUND
+        AlreadyExistingUserException -> HttpStatus.CONFLICT
 
         is ClientException -> HttpStatus.BAD_REQUEST
         is ServerException, is CriticalException -> HttpStatus.INTERNAL_SERVER_ERROR
