@@ -11,7 +11,9 @@ internal class UserGateway(
     private val userJpaRepository: UserJpaRepository,
 ) : UserRepository {
 
-    override fun create(platformId: String, platform: AuthPlatform, name: String, intro: String): User {
+    override fun create(platformId: String, platform: AuthPlatform, name: String, intro: String): User? {
+        if (userJpaRepository.existsByPlatformAndPlatformId(platform, platformId)) return null
+
         val user = UserJpaEntity.of(
             name = name,
             intro = intro,
@@ -31,6 +33,6 @@ internal class UserGateway(
     }
 
     override fun withdraw(userId: UserId) {
-        userJpaRepository.deleteById(userId)
+        userJpaRepository.deleteById(userId.value)
     }
 }
