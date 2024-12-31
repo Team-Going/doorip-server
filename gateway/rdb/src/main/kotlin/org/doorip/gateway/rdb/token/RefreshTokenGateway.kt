@@ -9,6 +9,7 @@ import org.doorip.domain.entity.UserId
 import org.doorip.domain.repository.RefreshTokenRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Component
+import org.springframework.transaction.annotation.Transactional
 
 @Component
 internal class RefreshTokenGateway(
@@ -48,6 +49,7 @@ internal class RefreshTokenGateway(
         return encoder.encodeToString(savedRefreshToken.refreshToken)
     }
 
+    @Transactional
     override fun deleteRefreshToken(userId: UserId) {
         refreshTokenJpaRepository.deleteByUserId(userId)
     }

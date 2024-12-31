@@ -11,3 +11,8 @@ data class User(
     val intro: String,
     val result: Int?,
 )
+
+data class UserInfo(
+    val user: User,
+    val token: Token,
+)

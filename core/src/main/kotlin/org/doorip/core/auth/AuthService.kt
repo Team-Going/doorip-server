@@ -1,10 +1,12 @@
 package org.doorip.core.auth
 
 import java.time.Duration
+import org.doorip.domain.AlreadyExistingUserException
 import org.doorip.domain.UnauthenticatedException
 import org.doorip.domain.entity.AuthPlatform
 import org.doorip.domain.entity.Token
 import org.doorip.domain.entity.UserId
+import org.doorip.domain.entity.UserInfo
 import org.doorip.domain.repository.AccessTokenRepository
 import org.doorip.domain.repository.AuthRepository
 import org.doorip.domain.repository.RefreshTokenRepository
@@ -18,10 +20,10 @@ internal class AuthService(
     private val refreshTokenRepository: RefreshTokenRepository,
     private val userRepository: UserRepository,
     private val authRepository: AuthRepository,
-) {
+) : AuthUseCase {
 
-    @Transactional(readOnly = true)
-    fun signIn(token: String, platform: String): Token {
+    @Transactional
+    override fun signIn(token: String, platform: String): UserInfo {
         val authPlatform = AuthPlatform.toAuthPlatform(platform)
         val platformId = authRepository.getPlatformId(token, authPlatform)
 
@@ -30,11 +32,16 @@ internal class AuthService(
             platform = authPlatform,
         ) ?: throw UnauthenticatedException
 
-        return issueToken(user.id)
+        val userInfo = UserInfo(
+            user = user,
+            token = issueToken(user.id),
+        )
+
+        return userInfo
     }
 
     @Transactional
-    fun signUp(token: String, platform: String, name: String, intro: String): Token {
+    override fun signUp(token: String, platform: String, name: String, intro: String): Token {
         val authPlatform = AuthPlatform.toAuthPlatform(platform)
         val platformId = authRepository.getPlatformId(token, authPlatform)
 
@@ -43,23 +50,23 @@ internal class AuthService(
             platform = authPlatform,
             name = name,
             intro = intro,
-        )
+        ) ?: throw AlreadyExistingUserException
 
         return issueToken(user.id)
     }
 
-    fun signOut(userId: UserId) {
+    override fun signOut(userId: UserId) {
         refreshTokenRepository.deleteRefreshToken(userId)
     }
 
-    fun reissue(refreshToken: String): Token {
+    override fun reissue(refreshToken: String): Token {
         val userId = refreshTokenRepository.getUserId(refreshToken) ?: throw UnauthenticatedException
 
         return issueToken(userId)
     }
 
     @Transactional
-    fun withdraw(userId: UserId) {
+    override fun withdraw(userId: UserId) {
         refreshTokenRepository.deleteRefreshToken(userId)
         userRepository.withdraw(userId)
     }

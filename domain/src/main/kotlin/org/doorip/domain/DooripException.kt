@@ -18,6 +18,7 @@ data object UnauthenticatedException : ClientException("e4010", "인증 과정�
 data object InvalidRequestValueException : ClientException("e4000", "잘못된 요청입니다.") { private fun readResolve(): Any = InvalidRequestValueException }
 data object MethodNotAllowedException : ClientException("e4050", "잘못된 HTTP method 요청입니다.") { private fun readResolve(): Any = MethodNotAllowedException }
 data object ConflictException : ClientException("e4090", "이미 존재하는 리소스입니다.") { private fun readResolve(): Any = ConflictException }
+data object AlreadyExistingUserException : ClientException("e4091", "이미 존재하는 회원입니다.") { private fun readResolve(): Any = AlreadyExistingUserException }
 
 // Server Exception
 sealed class ServerException(

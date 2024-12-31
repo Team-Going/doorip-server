@@ -7,6 +7,7 @@ plugins {
 dependencies {
     implementation(project(":core"))
     implementation(project(":support:yaml"))
+    implementation(project(":support:logging"))
     implementation(project(":presentation:support:auth"))
 
     implementation("org.springframework.boot:spring-boot-starter-web:${Versions.SPRING_BOOT}")

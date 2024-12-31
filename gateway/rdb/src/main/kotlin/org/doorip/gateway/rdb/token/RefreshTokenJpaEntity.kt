@@ -6,10 +6,12 @@ import jakarta.persistence.Id
 import jakarta.persistence.Table
 import java.time.LocalDateTime
 import org.doorip.domain.entity.UserId
+import org.doorip.gateway.rdb.BaseJpaEntity
 
 @Table(name = "refresh_token")
 @Entity
-internal class RefreshTokenJpaEntity {
+internal class RefreshTokenJpaEntity : BaseJpaEntity() {
+
     @Id
     @Column(name = "refresh_token", columnDefinition = "binary(45)", nullable = false)
     lateinit var refreshToken: ByteArray
