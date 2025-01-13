@@ -1,6 +1,4 @@
-package org.doorip.domain.repository
-
-import org.doorip.domain.entity.AuthPlatform
+package org.doorip.domain.auth
 
 interface AuthRepository {
     fun getPlatformId(token: String, platform: AuthPlatform): String

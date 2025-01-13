@@ -1,6 +1,6 @@
 package org.doorip.core.auth
 
-import org.doorip.domain.entity.UserId
+import org.doorip.domain.user.UserId
 import org.doorip.support.jwt.JwtProvider
 import org.doorip.support.jwt.JwtSecretKey
 import org.springframework.stereotype.Service

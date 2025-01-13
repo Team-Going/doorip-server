@@ -8,9 +8,9 @@ import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import jakarta.persistence.Table
-import org.doorip.domain.entity.AuthPlatform
-import org.doorip.domain.entity.User
-import org.doorip.domain.entity.UserId
+import org.doorip.domain.auth.AuthPlatform
+import org.doorip.domain.user.User
+import org.doorip.domain.user.UserId
 import org.doorip.gateway.rdb.BaseJpaEntity
 
 @Table(name = "users")

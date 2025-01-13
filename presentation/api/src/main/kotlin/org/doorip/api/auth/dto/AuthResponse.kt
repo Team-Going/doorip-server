@@ -1,6 +1,6 @@
 package org.doorip.api.auth.dto
 
-import org.doorip.domain.entity.Token
+import org.doorip.domain.auth.Token
 
 data class AuthResponse(
     val accessToken: String,

@@ -1,8 +1,8 @@
 package org.doorip.core.auth
 
-import org.doorip.domain.entity.Token
-import org.doorip.domain.entity.UserId
-import org.doorip.domain.entity.UserInfo
+import org.doorip.domain.auth.Token
+import org.doorip.domain.user.UserId
+import org.doorip.domain.user.UserInfo
 
 interface AuthUseCase {
     fun signIn(token: String, platform: String): UserInfo

@@ -1,4 +1,6 @@
-package org.doorip.domain.entity
+package org.doorip.domain.user
+
+import org.doorip.domain.auth.Token
 
 @JvmInline
 value class UserId(
