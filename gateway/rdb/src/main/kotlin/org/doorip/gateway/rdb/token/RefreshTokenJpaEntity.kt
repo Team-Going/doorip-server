@@ -5,7 +5,7 @@ import jakarta.persistence.Entity
 import jakarta.persistence.Id
 import jakarta.persistence.Table
 import java.time.LocalDateTime
-import org.doorip.domain.entity.UserId
+import org.doorip.domain.user.UserId
 import org.doorip.gateway.rdb.BaseJpaEntity
 
 @Table(name = "refresh_token")

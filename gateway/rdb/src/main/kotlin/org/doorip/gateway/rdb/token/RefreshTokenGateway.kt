@@ -5,8 +5,8 @@ import java.time.LocalDateTime
 import java.time.temporal.TemporalAmount
 import java.util.*
 import org.doorip.domain.UnauthenticatedException
-import org.doorip.domain.entity.UserId
-import org.doorip.domain.repository.RefreshTokenRepository
+import org.doorip.domain.auth.RefreshTokenRepository
+import org.doorip.domain.user.UserId
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional

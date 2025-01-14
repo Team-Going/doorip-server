@@ -3,14 +3,14 @@ package org.doorip.core.auth
 import java.time.Duration
 import org.doorip.domain.AlreadyExistingUserException
 import org.doorip.domain.UnauthenticatedException
-import org.doorip.domain.entity.AuthPlatform
-import org.doorip.domain.entity.Token
-import org.doorip.domain.entity.UserId
-import org.doorip.domain.entity.UserInfo
-import org.doorip.domain.repository.AccessTokenRepository
-import org.doorip.domain.repository.AuthRepository
-import org.doorip.domain.repository.RefreshTokenRepository
-import org.doorip.domain.repository.UserRepository
+import org.doorip.domain.auth.AccessTokenRepository
+import org.doorip.domain.auth.AuthPlatform
+import org.doorip.domain.auth.AuthRepository
+import org.doorip.domain.auth.RefreshTokenRepository
+import org.doorip.domain.auth.Token
+import org.doorip.domain.user.UserId
+import org.doorip.domain.user.UserInfo
+import org.doorip.domain.user.UserRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 

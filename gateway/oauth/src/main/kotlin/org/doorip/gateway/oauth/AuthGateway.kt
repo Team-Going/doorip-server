@@ -1,7 +1,7 @@
 package org.doorip.gateway.oauth
 
-import org.doorip.domain.entity.AuthPlatform
-import org.doorip.domain.repository.AuthRepository
+import org.doorip.domain.auth.AuthPlatform
+import org.doorip.domain.auth.AuthRepository
 import org.doorip.gateway.oauth.apple.AppleAuthService
 import org.doorip.gateway.oauth.kakao.KakaoAuthService
 import org.springframework.stereotype.Component

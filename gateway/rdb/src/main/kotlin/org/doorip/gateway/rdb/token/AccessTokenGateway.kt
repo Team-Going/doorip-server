@@ -2,8 +2,8 @@ package org.doorip.gateway.rdb.token
 
 import java.time.LocalDateTime
 import java.time.temporal.TemporalAmount
-import org.doorip.domain.entity.UserId
-import org.doorip.domain.repository.AccessTokenRepository
+import org.doorip.domain.auth.AccessTokenRepository
+import org.doorip.domain.user.UserId
 import org.doorip.support.jwt.JwtProvider
 import org.doorip.support.jwt.JwtSecretKey
 import org.springframework.stereotype.Component

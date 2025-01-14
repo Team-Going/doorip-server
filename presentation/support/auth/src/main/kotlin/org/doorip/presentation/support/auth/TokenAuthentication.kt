@@ -1,6 +1,6 @@
 package org.doorip.presentation.support.auth
 
-import org.doorip.domain.entity.UserId
+import org.doorip.domain.user.UserId
 import org.springframework.security.core.Authentication
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.web.authentication.WebAuthenticationDetails

@@ -1,8 +1,6 @@
-package org.doorip.domain.repository
+package org.doorip.domain.user
 
-import org.doorip.domain.entity.AuthPlatform
-import org.doorip.domain.entity.User
-import org.doorip.domain.entity.UserId
+import org.doorip.domain.auth.AuthPlatform
 
 interface UserRepository {
     fun create(platformId: String, platform: AuthPlatform, name: String, intro: String): User?

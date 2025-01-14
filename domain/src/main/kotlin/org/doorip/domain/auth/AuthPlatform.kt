@@ -1,4 +1,4 @@
-package org.doorip.domain.entity
+package org.doorip.domain.auth
 
 enum class AuthPlatform(
     private val description: String,

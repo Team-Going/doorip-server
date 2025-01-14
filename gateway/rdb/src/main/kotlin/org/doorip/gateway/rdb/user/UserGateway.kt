@@ -1,9 +1,9 @@
 package org.doorip.gateway.rdb.user
 
-import org.doorip.domain.entity.AuthPlatform
-import org.doorip.domain.entity.User
-import org.doorip.domain.entity.UserId
-import org.doorip.domain.repository.UserRepository
+import org.doorip.domain.auth.AuthPlatform
+import org.doorip.domain.user.User
+import org.doorip.domain.user.UserId
+import org.doorip.domain.user.UserRepository
 import org.springframework.stereotype.Component
 
 @Component
