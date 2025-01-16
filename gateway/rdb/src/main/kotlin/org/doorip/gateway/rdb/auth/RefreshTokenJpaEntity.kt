@@ -1,4 +1,4 @@
-package org.doorip.gateway.rdb.token
+package org.doorip.gateway.rdb.auth
 
 import jakarta.persistence.Column
 import jakarta.persistence.Entity

@@ -1,4 +1,4 @@
-package org.doorip.gateway.rdb.token
+package org.doorip.gateway.rdb.auth
 
 import org.doorip.domain.user.UserId
 import org.springframework.data.jpa.repository.JpaRepository

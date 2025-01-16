@@ -1,4 +1,4 @@
-package org.doorip.gateway.rdb.token
+package org.doorip.gateway.rdb.auth
 
 import java.time.LocalDateTime
 import java.time.temporal.TemporalAmount
