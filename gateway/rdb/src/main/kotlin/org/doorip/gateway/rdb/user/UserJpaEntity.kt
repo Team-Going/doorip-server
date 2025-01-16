@@ -19,7 +19,7 @@ internal class UserJpaEntity : BaseJpaEntity() {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
+    @Column(name = "user_id", columnDefinition = "bigint", nullable = false)
     var id: Long = 0
         protected set
 
@@ -31,7 +31,7 @@ internal class UserJpaEntity : BaseJpaEntity() {
     lateinit var intro: String
         protected set
 
-    @Column(name = "result", columnDefinition = "integer")
+    @Column(name = "result", columnDefinition = "integer", nullable = true)
     var result: Int? = null
 
     @Enumerated(EnumType.STRING)
