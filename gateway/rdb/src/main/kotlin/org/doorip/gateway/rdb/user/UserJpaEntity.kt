@@ -16,7 +16,6 @@ import org.doorip.gateway.rdb.BaseJpaEntity
 @Table(name = "users")
 @Entity
 internal class UserJpaEntity : BaseJpaEntity() {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id", columnDefinition = "bigint", nullable = false)

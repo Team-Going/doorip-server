@@ -5,8 +5,11 @@ import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
+import jakarta.persistence.OneToMany
 import jakarta.persistence.Table
 import java.time.LocalDate
+import org.hibernate.annotations.Cascade
+import org.hibernate.annotations.CascadeType
 
 @Table(name = "trip")
 @Entity
@@ -32,4 +35,12 @@ internal class TripJpaEntity {
     @Column(name = "end_date", columnDefinition = "date", nullable = false)
     lateinit var endDate: LocalDate
         protected set
+
+    @Cascade(value = [CascadeType.PERSIST, CascadeType.REMOVE])
+    @OneToMany(mappedBy = "trip")
+    val participants: MutableList<ParticipantJpaEntity> = mutableListOf()
+
+    @Cascade(CascadeType.REMOVE)
+    @OneToMany(mappedBy = "trip")
+    val todos: MutableList<TodoJpaEntity> = mutableListOf()
 }
