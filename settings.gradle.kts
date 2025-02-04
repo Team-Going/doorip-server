@@ -8,4 +8,5 @@ include(
     "support:yaml",
     "support:jwt",
     "support:logging",
+    "support:utils",
 )
