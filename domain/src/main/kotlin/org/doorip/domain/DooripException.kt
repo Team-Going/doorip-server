@@ -27,6 +27,7 @@ sealed class ServerException(
 ) : DooripException(code, message)
 
 data object NotFoundException : ServerException("e4040", "대상을 찾을 수 없습니다.") { private fun readResolve(): Any = NotFoundException }
+data object UserNotFoundException : ServerException("e4041", "존재하지 않는 회원입니다.") { private fun readResolve(): Any = UserNotFoundException }
 data object InternalServerException : ServerException("e5000", "서버 내부 오류입니다.") { private fun readResolve(): Any = InternalServerException }
 
 // Critical Exception
