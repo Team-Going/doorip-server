@@ -27,8 +27,8 @@ class TripController(
         val response = tripUseCase.createTrip(
             userId = authenticatedUser.userId,
             title = request.title,
-            startDate = request.startDate,
-            endDate = request.endDate,
+            startAt = request.startDate,
+            endAt = request.endDate,
             styles = request.toPropensityTag(),
         ).toResponse()
 

@@ -17,14 +17,14 @@ internal class TripService(
 ) : TripUseCase {
 
     @Transactional
-    override fun createTrip(userId: UserId, title: String, startDate: LocalDate, endDate: LocalDate, styles: PropensityTag): Trip {
+    override fun createTrip(userId: UserId, title: String, startAt: LocalDate, endAt: LocalDate, styles: PropensityTag): Trip {
         userRepository.getUser(userId) ?: throw UserNotFoundException
 
         val trip = tripRepository.createTrip(
             userId = userId,
             title = title,
-            startAt = startDate,
-            endAt = endDate,
+            startAt = startAt,
+            endAt = endAt,
             styles = styles,
         )
 

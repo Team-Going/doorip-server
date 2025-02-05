@@ -19,6 +19,6 @@ data class TripCreateRequest(
 
 fun TripCreateRequest.toPropensityTag(): PropensityTag {
     return PropensityTag(
-        styles = listOfNotNull(styleA, styleB, styleC, styleD, styleE),
+        styles = listOf(styleA, styleB, styleC, styleD, styleE),
     )
 }

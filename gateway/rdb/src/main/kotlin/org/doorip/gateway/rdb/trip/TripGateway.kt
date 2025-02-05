@@ -10,6 +10,7 @@ import org.doorip.gateway.rdb.user.UserJpaRepository
 import org.doorip.support.utils.RandomCodeGenerator
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Component
+import org.springframework.transaction.annotation.Transactional
 
 @Component
 internal class TripGateway(
@@ -17,6 +18,7 @@ internal class TripGateway(
     private val tripJpaRepository: TripJpaRepository,
 ) : TripRepository {
 
+    @Transactional
     override fun createTrip(userId: UserId, title: String, startAt: LocalDate, endAt: LocalDate, styles: PropensityTag): Trip {
         val user = userJpaRepository.findByIdOrNull(userId.value) ?: throw UserNotFoundException
 

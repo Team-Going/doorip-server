@@ -6,5 +6,5 @@ import org.doorip.domain.trip.Trip
 import org.doorip.domain.user.UserId
 
 interface TripUseCase {
-    fun createTrip(userId: UserId, title: String, startDate: LocalDate, endDate: LocalDate, styles: PropensityTag): Trip
+    fun createTrip(userId: UserId, title: String, startAt: LocalDate, endAt: LocalDate, styles: PropensityTag): Trip
 }
