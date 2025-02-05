@@ -1,6 +1,6 @@
 package org.doorip.domain.trip
 
-import java.time.LocalDateTime
+import java.time.LocalDate
 
 @JvmInline
 value class TripId(
@@ -11,7 +11,7 @@ data class Trip(
     val id: TripId,
     val code: String,
     val title: String,
-    val startAt: LocalDateTime,
-    val endAt: LocalDateTime,
+    val startAt: LocalDate,
+    val endAt: LocalDate,
     val participants: List<Participant>,
 )

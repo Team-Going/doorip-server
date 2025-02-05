@@ -11,7 +11,8 @@ import jakarta.persistence.JoinColumn
 import jakarta.persistence.ManyToOne
 import jakarta.persistence.OneToMany
 import jakarta.persistence.Table
-import org.doorip.domain.trip.PropensityTag
+import org.doorip.domain.trip.Participant
+import org.doorip.domain.trip.ParticipantId
 import org.doorip.gateway.rdb.user.UserJpaEntity
 import org.hibernate.annotations.Cascade
 import org.hibernate.annotations.CascadeType
@@ -26,7 +27,7 @@ internal class ParticipantJpaEntity {
         protected set
 
     @Embedded
-    lateinit var propensityTag: PropensityTag
+    lateinit var propensityTag: PropensityTagEmbeddable
         protected set
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -42,4 +43,31 @@ internal class ParticipantJpaEntity {
     @Cascade(CascadeType.REMOVE)
     @OneToMany(mappedBy = "participant")
     val allocators: MutableList<AllocatorJpaEntity> = mutableListOf()
+
+    internal fun changeTrip(trip: TripJpaEntity) {
+        if (::trip.isInitialized) {
+            this.trip.removeParticipant(this)
+        }
+        this.trip = trip
+        trip.addParticipant(this)
+    }
+
+    companion object {
+        fun of(propensityTag: PropensityTagEmbeddable, user: UserJpaEntity, trip: TripJpaEntity): ParticipantJpaEntity {
+            val participant = ParticipantJpaEntity().apply {
+                this.propensityTag = propensityTag
+                this.user = user
+            }
+            participant.changeTrip(trip)
+
+            return participant
+        }
+    }
+}
+
+internal fun ParticipantJpaEntity.toDomain(): Participant {
+    return Participant(
+        id = ParticipantId(id),
+        propensityTag = propensityTag.toDomain(),
+    )
 }
