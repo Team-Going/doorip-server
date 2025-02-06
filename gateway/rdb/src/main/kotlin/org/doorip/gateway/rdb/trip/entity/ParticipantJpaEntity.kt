@@ -1,4 +1,4 @@
-package org.doorip.gateway.rdb.trip
+package org.doorip.gateway.rdb.trip.entity
 
 import jakarta.persistence.Column
 import jakarta.persistence.Embedded
@@ -13,7 +13,7 @@ import jakarta.persistence.OneToMany
 import jakarta.persistence.Table
 import org.doorip.domain.trip.Participant
 import org.doorip.domain.trip.ParticipantId
-import org.doorip.gateway.rdb.user.UserJpaEntity
+import org.doorip.gateway.rdb.user.entity.UserJpaEntity
 import org.hibernate.annotations.Cascade
 import org.hibernate.annotations.CascadeType
 

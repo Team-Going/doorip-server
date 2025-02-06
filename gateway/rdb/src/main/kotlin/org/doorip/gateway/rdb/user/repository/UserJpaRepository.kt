@@ -1,6 +1,7 @@
-package org.doorip.gateway.rdb.user
+package org.doorip.gateway.rdb.user.repository
 
 import org.doorip.domain.auth.AuthPlatform
+import org.doorip.gateway.rdb.user.entity.UserJpaEntity
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Modifying
 import org.springframework.data.jpa.repository.Query

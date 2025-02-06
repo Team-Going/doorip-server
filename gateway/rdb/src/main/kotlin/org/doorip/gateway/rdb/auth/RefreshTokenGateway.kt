@@ -7,6 +7,8 @@ import java.util.*
 import org.doorip.domain.UnauthenticatedException
 import org.doorip.domain.auth.RefreshTokenRepository
 import org.doorip.domain.user.UserId
+import org.doorip.gateway.rdb.auth.entity.RefreshTokenJpaEntity
+import org.doorip.gateway.rdb.auth.repository.RefreshTokenJpaRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
