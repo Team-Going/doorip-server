@@ -19,6 +19,9 @@ data object InvalidRequestValueException : ClientException("e4000", "잘못된 �
 data object MethodNotAllowedException : ClientException("e4050", "잘못된 HTTP method 요청입니다.") { private fun readResolve(): Any = MethodNotAllowedException }
 data object ConflictException : ClientException("e4090", "이미 존재하는 리소스입니다.") { private fun readResolve(): Any = ConflictException }
 data object AlreadyExistingUserException : ClientException("e4091", "이미 존재하는 회원입니다.") { private fun readResolve(): Any = AlreadyExistingUserException }
+data object TripNotFoundException : ClientException("e4043", "존재하지 않는 여행입니다.") { private fun readResolve(): Any = TripNotFoundException }
+data object AlreadyExistingParticipantException : ClientException("e4092", "이미 존재하는 참여자입니다.") { private fun readResolve(): Any = AlreadyExistingParticipantException }
+data object ExceedMaximumParticipantException : ClientException("e4006", "여행에 입장할 수 있는 최대 인원은 6명입니다.") { private fun readResolve(): Any = ExceedMaximumParticipantException }
 
 // Server Exception
 sealed class ServerException(
