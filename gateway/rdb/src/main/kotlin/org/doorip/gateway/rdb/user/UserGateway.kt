@@ -4,6 +4,9 @@ import org.doorip.domain.auth.AuthPlatform
 import org.doorip.domain.user.User
 import org.doorip.domain.user.UserId
 import org.doorip.domain.user.UserRepository
+import org.doorip.gateway.rdb.user.entity.UserJpaEntity
+import org.doorip.gateway.rdb.user.entity.toDomain
+import org.doorip.gateway.rdb.user.repository.UserJpaRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Component
 
