@@ -1,6 +1,7 @@
 package org.doorip.api.exception
 
 import org.doorip.api.dto.ExceptionResponse
+import org.doorip.domain.AlreadyExistingParticipantException
 import org.doorip.domain.AlreadyExistingUserException
 import org.doorip.domain.ClientException
 import org.doorip.domain.ConflictException
@@ -9,6 +10,7 @@ import org.doorip.domain.DooripException
 import org.doorip.domain.MethodNotAllowedException
 import org.doorip.domain.NotFoundException
 import org.doorip.domain.ServerException
+import org.doorip.domain.TripNotFoundException
 import org.doorip.domain.UnauthenticatedException
 import org.doorip.domain.UnauthorizedException
 import org.springframework.http.HttpStatus
@@ -38,10 +40,13 @@ internal fun DooripException.getHttpStatus(): HttpStatus =
         is UnauthenticatedException -> HttpStatus.UNAUTHORIZED
 
         MethodNotAllowedException -> HttpStatus.METHOD_NOT_ALLOWED
+
         ConflictException -> HttpStatus.CONFLICT
+        AlreadyExistingUserException -> HttpStatus.CONFLICT
+        AlreadyExistingParticipantException -> HttpStatus.CONFLICT
 
         NotFoundException -> HttpStatus.NOT_FOUND
-        AlreadyExistingUserException -> HttpStatus.CONFLICT
+        TripNotFoundException -> HttpStatus.NOT_FOUND
 
         is ClientException -> HttpStatus.BAD_REQUEST
         is ServerException, is CriticalException -> HttpStatus.INTERNAL_SERVER_ERROR

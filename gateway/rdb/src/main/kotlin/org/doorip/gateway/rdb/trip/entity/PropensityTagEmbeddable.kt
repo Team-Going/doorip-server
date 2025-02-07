@@ -1,4 +1,4 @@
-package org.doorip.gateway.rdb.trip
+package org.doorip.gateway.rdb.trip.entity
 
 import jakarta.persistence.Column
 import jakarta.persistence.Embeddable

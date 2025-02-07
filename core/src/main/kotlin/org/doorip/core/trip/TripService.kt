@@ -1,9 +1,11 @@
 package org.doorip.core.trip
 
 import java.time.LocalDate
+import org.doorip.domain.TripNotFoundException
 import org.doorip.domain.UserNotFoundException
 import org.doorip.domain.trip.PropensityTag
 import org.doorip.domain.trip.Trip
+import org.doorip.domain.trip.TripId
 import org.doorip.domain.trip.TripRepository
 import org.doorip.domain.user.UserId
 import org.doorip.domain.user.UserRepository
@@ -29,5 +31,24 @@ internal class TripService(
         )
 
         return trip
+    }
+
+    override fun verifyInvitationCode(code: String): Trip {
+        return tripRepository.verifyTripInvitation(code) ?: throw TripNotFoundException
+    }
+
+    @Transactional
+    override fun entryTrip(userId: UserId, tripId: TripId, styles: PropensityTag): TripId {
+        userRepository.getUser(userId) ?: throw UserNotFoundException
+
+        tripRepository.validateIsValidTrip(tripId)
+
+        tripRepository.entryTrip(
+            userId = userId,
+            tripId = tripId,
+            styles = styles,
+        )
+
+        return tripId
     }
 }
