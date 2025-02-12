@@ -16,7 +16,7 @@ data class TripCreateResponse(
     val day: Int,
 )
 
-fun Trip.toResponse(): TripCreateResponse = TripCreateResponse(
+fun Trip.toCreateResponse(): TripCreateResponse = TripCreateResponse(
     tripId = id.value,
     title = title,
     startDate = startAt,
