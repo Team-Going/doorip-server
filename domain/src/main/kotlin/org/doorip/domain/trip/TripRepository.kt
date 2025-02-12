@@ -9,4 +9,5 @@ interface TripRepository {
     fun entryTrip(userId: UserId, tripId: TripId, styles: PropensityTag)
     fun getTrip(tripId: TripId): Trip?
     fun validateIsValidTrip(tripId: TripId)
+    fun getTrips(userId: UserId, progress: Progress): List<Trip>
 }
