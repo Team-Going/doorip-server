@@ -13,13 +13,14 @@ import jakarta.persistence.OneToMany
 import jakarta.persistence.Table
 import org.doorip.domain.trip.Participant
 import org.doorip.domain.trip.ParticipantId
+import org.doorip.gateway.rdb.BaseJpaEntity
 import org.doorip.gateway.rdb.user.entity.UserJpaEntity
 import org.hibernate.annotations.Cascade
 import org.hibernate.annotations.CascadeType
 
 @Table(name = "participant")
 @Entity
-internal class ParticipantJpaEntity {
+internal class ParticipantJpaEntity : BaseJpaEntity() {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "participant_id", columnDefinition = "bigint", nullable = false)
