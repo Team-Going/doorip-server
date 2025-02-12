@@ -13,5 +13,4 @@ data class Trip(
     val title: String,
     val startAt: LocalDate,
     val endAt: LocalDate,
-    val participants: List<Participant>,
 )

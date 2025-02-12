@@ -9,10 +9,11 @@ import jakarta.persistence.Id
 import jakarta.persistence.JoinColumn
 import jakarta.persistence.ManyToOne
 import jakarta.persistence.Table
+import org.doorip.gateway.rdb.BaseJpaEntity
 
 @Table(name = "allocator")
 @Entity
-internal class AllocatorJpaEntity {
+internal class AllocatorJpaEntity : BaseJpaEntity() {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "allocator_id", columnDefinition = "bigint", nullable = false)

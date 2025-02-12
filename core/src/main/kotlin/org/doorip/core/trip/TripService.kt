@@ -3,6 +3,7 @@ package org.doorip.core.trip
 import java.time.LocalDate
 import org.doorip.domain.TripNotFoundException
 import org.doorip.domain.UserNotFoundException
+import org.doorip.domain.trip.Progress
 import org.doorip.domain.trip.PropensityTag
 import org.doorip.domain.trip.Trip
 import org.doorip.domain.trip.TripId
@@ -50,5 +51,9 @@ internal class TripService(
         )
 
         return tripId
+    }
+
+    override fun getTrips(userId: UserId, progress: Progress): List<Trip> {
+        return tripRepository.getTrips(userId, progress)
     }
 }
