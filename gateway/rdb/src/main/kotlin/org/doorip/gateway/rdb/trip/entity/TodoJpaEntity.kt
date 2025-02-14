@@ -15,12 +15,13 @@ import jakarta.persistence.Table
 import java.time.LocalDate
 import org.doorip.domain.trip.TodoStatus
 import org.doorip.domain.trip.TodoType
+import org.doorip.gateway.rdb.BaseJpaEntity
 import org.hibernate.annotations.Cascade
 import org.hibernate.annotations.CascadeType
 
 @Table(name = "todo")
 @Entity
-internal class TodoJpaEntity {
+internal class TodoJpaEntity : BaseJpaEntity() {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "todo_id", columnDefinition = "bigint", nullable = false)

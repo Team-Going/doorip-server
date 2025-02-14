@@ -10,12 +10,13 @@ import jakarta.persistence.Table
 import java.time.LocalDate
 import org.doorip.domain.trip.Trip
 import org.doorip.domain.trip.TripId
+import org.doorip.gateway.rdb.BaseJpaEntity
 import org.hibernate.annotations.Cascade
 import org.hibernate.annotations.CascadeType
 
 @Table(name = "trip")
 @Entity
-internal class TripJpaEntity {
+internal class TripJpaEntity : BaseJpaEntity() {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "trip_id", columnDefinition = "bigint", nullable = false)
@@ -73,6 +74,5 @@ internal fun TripJpaEntity.toDomain(): Trip {
         title = this.title,
         startAt = this.startDate,
         endAt = this.endDate,
-        participants = participants.map { it.toDomain() },
     )
 }

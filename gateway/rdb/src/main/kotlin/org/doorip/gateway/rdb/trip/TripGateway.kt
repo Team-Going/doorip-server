@@ -5,6 +5,7 @@ import org.doorip.domain.AlreadyExistingParticipantException
 import org.doorip.domain.ExceedMaximumParticipantException
 import org.doorip.domain.TripNotFoundException
 import org.doorip.domain.UserNotFoundException
+import org.doorip.domain.trip.Progress
 import org.doorip.domain.trip.PropensityTag
 import org.doorip.domain.trip.Trip
 import org.doorip.domain.trip.TripId
@@ -91,6 +92,20 @@ internal class TripGateway(
         if (participants.size >= MAXIMUM_PARTICIPANT) {
             throw ExceedMaximumParticipantException
         }
+    }
+
+    override fun getTrips(userId: UserId, progress: Progress): List<Trip> {
+        val trips = when (progress) {
+            Progress.INCOMPLETE -> {
+                tripJpaRepository.findIncompleteTrips(userId.value, LocalDate.now())
+            }
+
+            Progress.COMPLETE -> {
+                tripJpaRepository.findCompleteTrips(userId.value, LocalDate.now())
+            }
+        }
+
+        return trips.map { it.toDomain() }
     }
 
     private fun generateCode(): String {

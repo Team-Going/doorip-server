@@ -5,7 +5,7 @@ import java.time.LocalDate
 import java.time.temporal.ChronoUnit
 import org.doorip.domain.trip.Trip
 
-data class TripVerifyInvitationCodeResponse(
+data class TripResponse(
     val tripId: Long,
     val title: String,
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy.MM.dd")
@@ -15,7 +15,7 @@ data class TripVerifyInvitationCodeResponse(
     val day: Int,
 )
 
-fun Trip.toVerifyResponse(): TripVerifyInvitationCodeResponse = TripVerifyInvitationCodeResponse(
+fun Trip.toResponse(): TripResponse = TripResponse(
     tripId = id.value,
     title = title,
     startDate = startAt,
