@@ -13,12 +13,9 @@ internal interface TripJpaRepository : JpaRepository<TripJpaEntity, Long> {
     @Query(
         "select t " +
             "from TripJpaEntity t " +
-            "join ParticipantJpaEntity p " +
-            "on p.trip = t " +
-            "join UserJpaEntity u " +
-            "on p.user = u " +
-            "where u.id = :userId " +
-            "and datediff(t.endDate, :now) >= 0 " +
+            "join ParticipantJpaEntity p on p.trip = t " +
+            "join UserJpaEntity u on p.user = u " +
+            "where u.id = :userId and t.endDate >= :now " +
             "order by datediff(t.startDate, :now), t.createdDate",
     )
     fun findIncompleteTrips(@Param("userId") userId: Long, @Param("now") now: LocalDate): List<TripJpaEntity>
@@ -26,12 +23,9 @@ internal interface TripJpaRepository : JpaRepository<TripJpaEntity, Long> {
     @Query(
         "select t " +
             "from TripJpaEntity t " +
-            "join ParticipantJpaEntity p " +
-            "on p.trip = t " +
-            "join UserJpaEntity u " +
-            "on p.user = u " +
-            "where u.id = :userId " +
-            "and datediff(t.endDate, :now) < 0 " +
+            "join ParticipantJpaEntity p on p.trip = t " +
+            "join UserJpaEntity u on p.user = u " +
+            "where u.id = :userId and t.endDate < :now " +
             "order by datediff(t.startDate, :now), t.createdDate",
     )
     fun findCompleteTrips(@Param("userId") userId: Long, @Param("now") now: LocalDate): List<TripJpaEntity>
